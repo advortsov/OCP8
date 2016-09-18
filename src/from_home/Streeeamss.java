@@ -57,7 +57,6 @@ public class Streeeamss {
                 TreeSet::addAll);
         System.out.println(set); // [f, l, o, w]
 
-<<<<<<< HEAD
         //filter
         Stream<String> s = Stream.of("monkey", "gorilla", "bonobo");
         s.filter(x -> x.startsWith("m")).forEach(System.out::println); // monkey
@@ -131,7 +130,6 @@ public class Streeeamss {
                 .sorted()
                 .limit(2)
                 .forEach(System.out::println);
-=======
->>>>>>> origin/master
+
     }
 }
