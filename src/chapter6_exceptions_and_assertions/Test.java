@@ -1,6 +1,5 @@
-package chapter6;
+package chapter6_exceptions_and_assertions;
 
-import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 /**

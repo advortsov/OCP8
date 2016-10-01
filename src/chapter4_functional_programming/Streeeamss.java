@@ -1,9 +1,7 @@
-package from_home;
+package chapter4_functional_programming;
 
 import java.util.*;
-import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
-import java.util.function.DoubleBinaryOperator;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
