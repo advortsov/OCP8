@@ -25,7 +25,12 @@ public class BasicFileAttributesSample {
 //        identifier for the file within the file system or null if it is not supported by the file system.
 
         changeAttrView();
+
+//        Path p1 = Paths.get("c:\\code\\java\\PathTest.java");
+//        System.out.println(p1.getName(3).toString());
+
     }
+
 
     private static void changeAttrView() throws IOException {
         Path path = Paths.get("/Dev/Git/LICENSE.txt");
