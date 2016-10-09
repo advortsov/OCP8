@@ -63,11 +63,14 @@ public class ParallelStreams {
 //        task and retrieves its data:
         System.out.println(Arrays.asList(1, 2, 3, 4, 5, 6).parallelStream().findAny().get());
 
-        System.out.println("===========================================================");
+        System.out.println("=====================(Arrays.asList('w', 'o', 'l', 'f')=================================");
 
         System.out.println(Arrays.asList('w', 'o', 'l', 'f')
                 .stream()
-                .reduce("", (c, s1) -> c + s1,
+                .reduce("identity: ", (c, s1) -> {
+                            System.out.println("acumm: " + c + "|" + s1);
+                            return c + s1;
+                        },
                         (s2, s3) -> s2 + s3));
 
         System.out.println("=======================NOT AN ASSOCIATIVE ACCUMULATOR==============================");

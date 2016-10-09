@@ -158,6 +158,14 @@ public class I18nAndl10n {
         System.out.println("==================================================");
         System.out.println("==================================================");
 
+
+        double amount = 123456.789;
+        Locale fr = new Locale("fr", "FR");
+        NumberFormat formatter = NumberFormat.getInstance(fr);
+        String s1 = formatter.format(amount);
+        formatter = NumberFormat.getInstance();
+        Number amount2 = formatter.parse(s1);
+        System.out.println(amount + " " + amount2);
     }
 
 

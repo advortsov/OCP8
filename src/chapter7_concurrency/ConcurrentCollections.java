@@ -70,11 +70,11 @@ public class ConcurrentCollections {
             e.printStackTrace();
             // Handle interruption
         }
-        System.out.println("===================================================");
+        System.out.println("=================blockingDeque============================");
 //        This example creates a LinkedBlockingDeque and assigns it to a BlockingDeque reference.
 //        Since BlockingDeque extends Queue, Deque, and BlockingQueue, all of the previously
 //        defined queue methods are available for use.
-        try {
+        try { // 5 91 47 3
             BlockingDeque<Integer> blockingDeque = new LinkedBlockingDeque<>();
             blockingDeque.offer(91);
             blockingDeque.offerFirst(5, 2, TimeUnit.MINUTES);
@@ -92,8 +92,8 @@ public class ConcurrentCollections {
 //        addAndPrintItems(new LinkedBlockingDeque<>(Arrays.asList(1, 6, 44, 3, 0, 7)));
         addAndPrintItems(new LinkedBlockingDeque<>());
 
-
-        System.out.println("===================================================");
+        System.out.println();
+        System.out.println("===================CopyOnWriteArrayList==========================");
 
         //CopyOnWrite
         List<Integer> list = new CopyOnWriteArrayList<>(Arrays.asList(4, 3, 52));

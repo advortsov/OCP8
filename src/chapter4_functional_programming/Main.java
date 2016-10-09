@@ -3,15 +3,7 @@ package chapter4_functional_programming;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 /**
  * @author advortco
@@ -92,11 +84,24 @@ public class Main {
         System.out.println(binaryOperator1.apply("baby ", "chick")); // baby chick
         System.out.println(binaryOperator2.apply("baby ", "chick")); // baby chick
 
-        System.out.println("===========================================================================");
+        System.out.println("==============================a -> b -> a - b============================================");
 
+        IntFunction<IntUnaryOperator> fo = a -> (b -> a - b);
+        int x = operate(fo.apply(20)); //2       
+        System.out.println(x);
+
+        HashMap<Integer, String> hm = new HashMap<>();
+        hm.put(1, "a");
+        hm.put(2, "b");
+        hm.put(3, "c");
+        hm.forEach((key, value) -> System.out.printf("%d %s ", key, value));
+        hm.forEach(System.out::println);
 
 
     }
 
+    public static int operate(IntUnaryOperator iuo) {
+        return iuo.applyAsInt(5);
+    }
 
 }

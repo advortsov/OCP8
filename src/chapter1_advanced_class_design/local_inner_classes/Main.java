@@ -13,6 +13,7 @@ package chapter1_advanced_class_design.local_inner_classes;
 public class Main {
     private int length = 5;
 
+
     public void calculate() {
         final int width = 20;
         class Inner {

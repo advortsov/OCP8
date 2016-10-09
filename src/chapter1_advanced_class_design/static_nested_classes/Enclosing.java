@@ -12,10 +12,22 @@ package chapter1_advanced_class_design.static_nested_classes;
 public class Enclosing {
     static class Nested {
         private int price = 6;
+
+        class InnerInStaticNested{
+            private int in = 7;
+        }
+
+        void foo(){
+            InnerInStaticNested innerInStaticNested = new InnerInStaticNested();
+            System.out.println(innerInStaticNested.in);
+        }
     }
 
     public static void main(String[] args) {
+        Enclosing enclosing = new Enclosing();
         Nested nested = new Nested(); // doesn't need to create Enclosing-object
+        Enclosing.Nested nested1 = new Enclosing.Nested(); // ok too
+
         System.out.println(nested.price);
     }
 
