@@ -22,15 +22,13 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.groupingBy;
 
 /**
- * This class
- *
  * @author advortco
  */
 public class Streams {
     public static void main(String[] args) {
 
         /**
-         * * Performs a <a href="package-summary.html#Reduction">reduction</a> on the
+         * Performs a <a href="package-summary.html#Reduction">reduction</a> on the
          * elements of this stream, using the provided identity, accumulation and
          * combining functions.  This is equivalent to:
          *
@@ -46,7 +44,7 @@ public class Streams {
                         (i, c2) -> i + c2.length(), // q2
                         (s1, s2) -> s1 + s2)); // q3
         System.out.println("=============================================!");
-
+//
         Stream<Double> randoms = Stream.generate(Math::random);
         Stream<Integer> oddNumbers = Stream.iterate(1, n -> n + 2);
 

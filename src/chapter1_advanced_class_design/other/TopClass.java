@@ -19,5 +19,6 @@ public class TopClass {
 }
 
 class Inner {
+//    void doA(){} -- netu!
     int value;
 }

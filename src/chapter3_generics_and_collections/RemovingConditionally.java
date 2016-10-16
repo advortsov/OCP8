@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Collection method:
+ * <p>
+ * Removes all of the elements of this collection that satisfy the given
+ * predicate.  Errors or runtime exceptions thrown during iteration or by
+ * the predicate are relayed to the caller.
+ *
  * @author advortco
  */
 public class RemovingConditionally {

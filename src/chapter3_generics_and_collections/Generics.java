@@ -21,6 +21,8 @@ public class Generics {
     static class C extends B {
     }
 
+    static class NotA {
+    }
 
     public static void main(String[] args) {
         List<? super A> numList = new ArrayList<>();
@@ -28,16 +30,21 @@ public class Generics {
         numList.add(new B());
         numList.add(new C());
 
+//        numList.add(new Object());
+//        numList.add(new NotA());  // doesnt compile
+
         List<Number> numList1 = new ArrayList<Number>();
 
         List<? super Number> foo3 = new ArrayList<Object>(); // Object is a "super" of Number
-        List<? super Integer> foo4 = new ArrayList<>(); // Object is a "super" of Number
+        foo3.add(new Double(4));
+        foo3.add(new Float(4));
+
+        List<? super Integer> foo4 = new ArrayList<>();
         foo4.add(new Integer(3));
 
         Number integ = new Integer(5);
         List<? extends Number> foo6 = new ArrayList<Integer>(); // Object is a "super" of Number
 //        foo6.add(integ);
-//        integ.
 
         numList1.add(4);
         numList1.add(4.0);

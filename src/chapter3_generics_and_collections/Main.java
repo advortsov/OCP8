@@ -11,17 +11,20 @@ import java.util.Vector;
  */
 public class Main {
     public static void main(String[] args) {
-        Collection<String> collection;
 
+        Collection<String> collection;
         Queue<Integer> queue = new ArrayDeque<>();
 
         System.out.println(queue.offer(10)); // true
         System.out.println(queue.offer(4)); // true
+
+        System.out.println(queue);
+
         System.out.println(queue.peek()); // 10
         System.out.println(queue.poll()); // 10
         System.out.println(queue.poll()); // 4
         System.out.println(queue.peek()); // null
-
+        System.out.println(queue.poll()); // null
 
         ArrayDeque<Integer> stack = new ArrayDeque<>();
 

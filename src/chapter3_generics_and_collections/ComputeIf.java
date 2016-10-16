@@ -17,6 +17,8 @@ public class ComputeIf {
         counts.put("Jenny", 1);
         BiFunction<String, Integer, Integer> mapper = (k, v) -> v + 1;
         Integer jenny = counts.computeIfPresent("Jenny", mapper);
+        // interface Map<K,V>. computeIfPresent - If the value for the specified key is present and non-null, attempts to
+        // compute a new mapping given the key and its current mapped value.
         Integer sam = counts.computeIfPresent("Sam", mapper);
         System.out.println(counts); // {Jenny=2}
         System.out.println(jenny); // 2

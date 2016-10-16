@@ -59,7 +59,8 @@ public class Main {
         System.out.println(f1.apply("cluck")); // 5
         System.out.println(f2.apply("cluck")); // 5
 //        This function turns a String into an Integer. Well, technically it turns the String into
-//        an int, which is autoboxed into an Integer. The types don’t have to be different. The following combines two String objects and produces another String:
+//        an int, which is autoboxed into an Integer. The types don’t have to be different.
+//        The following combines two String objects and produces another String:
         BiFunction<String, String, String> function1 = String::concat;
         BiFunction<String, String, String> function2 = (string, toAdd) -> string.concat(toAdd);
         System.out.println(function1.apply("baby ", "chick")); // baby chick
@@ -95,8 +96,6 @@ public class Main {
         hm.put(2, "b");
         hm.put(3, "c");
         hm.forEach((key, value) -> System.out.printf("%d %s ", key, value));
-        hm.forEach(System.out::println);
-
 
     }
 

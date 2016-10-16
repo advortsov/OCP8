@@ -1,11 +1,5 @@
 package chapter2_design_patterns_and_principles;
 
-/**
- * This class
- *
- * @author advortco
- */
-
 import java.util.function.*;
 
 public class Panda {

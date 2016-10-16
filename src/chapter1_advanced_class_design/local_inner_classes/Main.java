@@ -11,22 +11,27 @@ package chapter1_advanced_class_design.local_inner_classes;
  * @author advortco
  */
 public class Main {
-    private int length = 5;
+    private int huigth = 5;
 
+    class Ignato {
+        private int length = 5;
 
-    public void calculate() {
-        final int width = 20;
-        class Inner {
-            public void multiply() {
-                System.out.println(length * width);
+        public void calculate() {
+            final int width = 20;
+            //
+            class Inner {
+                public void multiply() {
+                    System.out.println(length * width * huigth);
+                }
             }
+            //
+            Inner inner = new Inner();
+            inner.multiply();
         }
-        Inner inner = new Inner();
-        inner.multiply();
     }
 
     public static void main(String[] args) {
-        Main outer = new Main();
+        Ignato outer = new Main().new Ignato();
         outer.calculate();
     }
 }

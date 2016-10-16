@@ -12,6 +12,32 @@ import java.util.stream.Collectors;
  * @date 09.10.2016.
  */
 public class Classify {
+    public static void main(String[] args) {
+        List<Book> books = Arrays.asList(
+                new Book("There is a hippy on the highway", "Thriller", "James Hadley Chase"),
+                new Book("Coffin from Hongkong", "Thriller", "James Hadley Chase"),
+                new Book("The Client", "Thriller", "John Grisham"),
+                new Book("Gone with the wind", "Fiction", "Margaret Mitchell"));
+        Map<String, Map<String, List<Book>>> classified = null;
+        classified = books.stream().collect(
+                Collectors
+                        .groupingBy(x -> x.getGenre(),
+                                Collectors.groupingBy(x -> x.getAuthor()))
+        );
+        System.out.println(classified);
+
+        Map<String, Map<String, List<Book>>> classified1 = books.stream().collect(
+                Collectors
+                        .groupingBy(Book::getGenre,
+                                Collectors.groupingBy(Book::getAuthor))
+        );
+        System.out.println(classified1);
+
+        List<Double> dList = Arrays.asList(10.0, 12.0);
+        Consumer<Double> df = x -> System.out.println(x);
+        dList.stream().forEach(df);
+        dList.stream().forEach(d -> System.out.println(d));
+    }
 
     static class Book {
         private int id;
@@ -68,31 +94,13 @@ public class Classify {
         public void setPrice(double price) {
             this.price = price;
         }
+
+        @Override
+        public String toString() {
+            return "Book{" +
+                    "title='" + title + '\'' +
+                    '}';
+        }
     }
 
-    public static void main(String[] args) {
-        List<Book> books = Arrays.asList(new Book("There is a hippy on the highway", "Thriller", "James Hadley Chase"),
-                new Book("Coffin from Hongkong", "Thriller", "James Hadley Chase"),
-                new Book("The Client", "Thriller", "John Grisham"),
-                new Book("Gone with the wind", "Fiction", "Margaret Mitchell"));
-        Map<String, Map<String, List<Book>>> classified = null;
-        classified = books.stream().collect(
-                Collectors
-                        .groupingBy(x -> x.getGenre(),
-                                Collectors.groupingBy(x -> x.getAuthor()))
-        );
-        System.out.println(classified);
-
-        Map<String, Map<String, List<Book>>> classified1 = books.stream().collect(
-                Collectors
-                        .groupingBy(Book::getGenre,
-                                Collectors.groupingBy(Book::getAuthor))
-        );
-        System.out.println(classified1);
-
-        List<Double> dList = Arrays.asList(10.0, 12.0);
-        Consumer<Double> df = x -> System.out.println(x);
-        dList.stream().forEach(df);
-        dList.stream().forEach(d -> System.out.println(d));
-    }
 }
