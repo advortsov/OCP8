@@ -1,14 +1,6 @@
 package chapter4_functional_programming;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.OptionalDouble;
-import java.util.OptionalLong;
-import java.util.Set;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -90,9 +82,9 @@ public class Streams {
         String result1 = ohMy1.collect(Collectors.joining(", "));
         System.out.println(result1); // lions, tigers, bears
 
-//        Stream<String> ohMy2 = Stream.of("lions", "tigers", "bears");
-//        TreeSet<String> result2 = ohMy2.filter(s -> s.startsWith("t").collect(Collectors.toCollection(TreeSet::new));
-//        System.out.println(result2); // [tigers]
+        Stream<String> ohMy2 = Stream.of("lions", "tigers", "bears");
+        TreeSet<String> result2 = ohMy2.filter(s -> s.startsWith("t")).collect(Collectors.toCollection(TreeSet::new));
+        System.out.println(result2); // [tigers]
 
         Stream<String> ohMy3 = Stream.of("lions", "tigers", "bears");
         Map<String, Integer> map3 = ohMy3.collect(
@@ -121,6 +113,7 @@ public class Streams {
         Map<Integer, Set<String>> map7 = ohMy7.collect(
                 groupingBy(String::length, Collectors.toSet()));
         System.out.println(map7); // {5=[lions, bears], 6=[tigers]}
+
 //        We can even change the type of Map returned through yet another parameter:
         Stream<String> ohMy8 = Stream.of("lions", "tigers", "bears");
         TreeMap<Integer, Set<String>> map8 = ohMy8.collect(
@@ -146,6 +139,7 @@ public class Streams {
         Map<Boolean, Set<String>> map11 = ohMy11.collect(
                 Collectors.partitioningBy(s -> s.length() <= 7, Collectors.toSet()));
         System.out.println(map11);// {false=[], true=[lions, tigers, bears]}
+
 //        Unlike groupingBy(), we cannot change the type of Map that gets returned. However,
 //                there are only two keys in the map, so does it really matter which Map type we use?
 //                Instead of using the downstream collector to specify the type, we can use any of the
@@ -166,16 +160,12 @@ public class Streams {
 //                                Collectors.minBy(Comparator.naturalOrder()))));
 //        System.out.println(map13); // {5=Optional[b], 6=Optional[t]}
 
-//        Stream<String> ohMy14 = Stream.of("lions", "tigers", "bears");
-//        Map<Integer, Optional<Character>> map14 = ohMy14.collect(
-//                groupingBy(
-//                        String::length,
-//                        mapping(s -> s.charAt(0),
-//                                minBy(Comparator.naturalOrder()))));
-//        System.out.println(map14); // {5=Optional[b], 6=Optional[t]}
+        Stream<String> streamq = Stream.iterate("", s -> s + "1");
+//        System.out.println("streamq: ");
+//        streamq.limit(10).forEach(System.out::print);
 
-        Stream<String> streamq = Stream.iterate("", (s) -> s + "1");
-        System.out.println(Arrays.toString(streamq.limit(2).map(x -> x + "2").toArray())); //[2, 12]
+
+        System.out.println(Arrays.toString(streamq.limit(10).map(x -> x + "2").toArray())); //[2, 12]
 
 
 //        8. D, E. The sum() method returns an int rather than an OptionalInt because the sum
@@ -187,11 +177,11 @@ public class Streams {
 //        Which of the following are true given the declaration IntStream is = IntStream.
 //                empty()? (Choose all that apply.)
 //        A. is.average() returns the type int.
-//                B. is.average() returns the type OptionalInt.
+//        B. is.average() returns the type OptionalInt.
 //        C. is.findAny() returns the type int.
-//                D. is.findAny() returns the type OptionalInt.
-//        E. is.sum() returns the type int.
-//                F. is.sum() returns the type OptionalInt.
+                                                //        D. is.findAny() returns the type OptionalInt.
+                                                //        E. is.sum() returns the type int.
+//        F. is.sum() returns the type OptionalInt.
 
         IntStream is = IntStream.empty();
         is.average(); //returns OptionalDouble!!!
@@ -255,6 +245,7 @@ public class Streams {
 //        Integer 1 inside. Line 5 converts to a primitive, again using autoboxing. Line 6 converts
 //        to a double primitive, which works since double d = 1; would work. Line 7 is where it
 //        all falls apart. Converting from a double to an int would require a cast inside the lambda.
+
 //        Stream<Integer> s = Stream.of(1);
 //        IntStream isq = s.mapToInt(xq -> xq);
 //        DoubleStream ds = s.mapToDouble(xq -> xq);
@@ -275,6 +266,7 @@ public class Streams {
                 Collectors.groupingBy(b -> b.startsWith("c"))); //By contrast, groupingBy() returns only keys that are
 //        actually needed.
         System.out.println(p + " " + g);
+        System.out.println("===========p======g======================");
 
         // 17.
         UnaryOperator<Integer> u = q -> q * q;
@@ -297,7 +289,7 @@ public class Streams {
         // 20.
         List<Integer> l = IntStream.range(1, 6)
                 .mapToObj(i -> i).collect(Collectors.toList());
-        l.forEach(System.out::println);
+        l.forEach(System.out::print);
 
         IntStream.range(1, 6)
                 .forEach(System.out::println);

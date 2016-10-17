@@ -13,7 +13,7 @@ public class Main {
 
         Optional<Double> opt = average();
         System.out.println(opt.orElse(Double.NaN));
-        System.out.println(opt.orElseGet(() -> Math.random()));
+        System.out.println(opt.orElseGet(Math::random));
 //        System.out.println(opt.orElseThrow(() -> new IllegalStateException()));
 
 

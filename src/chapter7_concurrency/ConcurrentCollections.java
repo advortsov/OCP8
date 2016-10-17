@@ -104,7 +104,7 @@ public class ConcurrentCollections {
         System.out.println();
         System.out.println("Size: " + list.size()); //Alternatively, if we had
 //        used a regular ArrayList object, a ConcurrentModificationException would have been
-//        thrown at runtime. With either class, though, we avoid entering an infi nite loop in which
+//        thrown at runtime. With either class, though, we avoid entering an infinite loop in which
 //        elements are constantly added to the array as we iterate over them.
 
 //        While the methods in Table 7.12 synchronize access to the data elements, such as
@@ -151,11 +151,11 @@ public class ConcurrentCollections {
      * executor is never shut down;
      */
     public static void printConstants() {
-        ExecutorService service = Executors.newScheduledThreadPool(10);
+        ExecutorService service = Executors.newScheduledThreadPool(8);
         DoubleStream.of(3.14159, 2.71828) // b1
                 .forEach(c -> service.submit( // b2
                         () -> System.out.println(10 * c))); // b3
         service.execute(() -> System.out.println("Printed")); // b4
-//        service.shutdown();
+        service.shutdown();
     }
 }

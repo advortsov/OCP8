@@ -14,7 +14,8 @@ public class AddData {
         try {
             service = Executors.newSingleThreadExecutor();
             Future<Integer> result = service.submit(() -> 30 + 11);
-            System.out.println(result.get(1, TimeUnit.MILLISECONDS));
+            System.out.println(result.get(1, TimeUnit.MILLISECONDS)); //Waits if necessary for at most the given time
+            // for the computation to complete, and then retrieves its result, if available.
         } finally {
             if (service != null) service.shutdown();
         }

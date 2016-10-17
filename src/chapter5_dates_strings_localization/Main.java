@@ -35,7 +35,8 @@ public class Main {
 //        use US/Eastern in our examples:
         ZoneId zone = ZoneId.of("US/Eastern");
         ZonedDateTime zoned1 = ZonedDateTime.of(2015, 1, 20,
-                6, 15, 30, 200, zone); //Notice that there isn’t an option to pass in the Month enum. This seems like an oversight
+                6, 15, 30, 200, zone); //Notice that there isn’t an option to pass in the Month enum.
+        // This seems like an oversight
 //        from the API creators and something that will be fixed in future versions of Java.
         ZonedDateTime zoned2 = ZonedDateTime.of(date1, time1, zone);
         ZonedDateTime zoned3 = ZonedDateTime.of(dateTime1, zone);
@@ -82,7 +83,8 @@ public class Main {
         // period format:
         System.out.println(Period.of(1, 2, 3)); // P1Y2M3D
         System.out.println(Period.ofMonths(3)); // P3M
-        System.out.println(Period.of(0, 20, 47));// The output is P20M47D. There are no years, so that part is skipped. It’s OK to have more
+        System.out.println(Period.of(0, 20, 47));// The output is P20M47D. There are no years,
+        // so that part is skipped. It’s OK to have more
 //        days than are in a month. Also it is OK to have more months than are in a year. Java uses
 //        the measures provided for each.
         System.out.println(Period.ofWeeks(3)); // P21D.
@@ -93,14 +95,15 @@ public class Main {
         LocalTime time = LocalTime.of(6, 15);
         LocalDateTime dateTime = LocalDateTime.of(date, time);
         Period period1 = Period.ofMonths(1);
-        System.out.println(date.plus(period1)); // 2015–02–20
+        System.out.println(date.plus(period1).plus(period1)); // 2015–03–20
         System.out.println(dateTime.plus(period1)); // 2015–02–20T06:15
 //        System.out.println(time.plus(period1)); // UnsupportedTemporalTypeException
 
 
-        System.out.println("================================================");
+        System.out.println("=====================Duration========================");
 //        We can create a Duration using a number of different granularities:
-        Duration daily = Duration.ofDays(1); // PT24H
+        Duration daily = Duration.ofDays(2); // PT24H
+        System.out.println(daily);
         Duration hourly = Duration.ofHours(1); // PT1H
         Duration everyMinute = Duration.ofMinutes(1); // PT1M
         Duration everyTenSeconds = Duration.ofSeconds(10); // PT10S
@@ -127,13 +130,14 @@ public class Main {
         System.out.println(everyNano);
         System.out.println(halfDays);
 
-        System.out.println("================================================");
+        System.out.println("====================between=========================");
 //        ChronoUnit is a great way to determine how far apart two Temporal values are. Temporal
 //        includes LocalDate, LocalTime, and so on.
         LocalTime one = LocalTime.of(5, 15);
         LocalTime two = LocalTime.of(6, 30);
         LocalDate date3 = LocalDate.of(2016, 1, 20);
         System.out.println(ChronoUnit.HOURS.between(one, two)); // 1
+        System.out.println(ChronoUnit.HOURS.between(two, one)); // -1
         System.out.println(ChronoUnit.MINUTES.between(one, two)); // 75
 //        System.out.println(ChronoUnit.MINUTES.between(one, date3)); // DateTimeException
 
@@ -167,7 +171,8 @@ public class Main {
         Instant instant = zonedDateTime.toInstant(); // 2015–05–25T15:55:00Z
         System.out.println(zonedDateTime); // 2015–05–25T11:55–04:00[US/Eastern]
         System.out.println(instant); // 2015–05–25T15:55:00Z
-//        The ZonedDateTime includes a time zone. The Instant gets rid of the time zone and turns it into an Instant of time in GMT.
+//        The ZonedDateTime includes a time zone. The Instant gets rid of the time zone and turns
+//        it into an Instant of time in GMT.
 
         System.out.println("================================================");
 //        If you have the number of seconds since 1970, you can also create an Instant that way:
@@ -181,7 +186,7 @@ public class Main {
         System.out.println(nextDay); // 2015–05–26T15:55:00Z
         Instant nextHour = instant1.plus(1, ChronoUnit.HOURS);
         System.out.println(nextHour); // 2015–05–25T16:55:00Z
-//        Instant nextWeek = instant.plus(1, ChronoUnit.WEEKS); // exception
+//        Instant nextWeek = instant.plus(1, ChronoUnit.WEEKS); // UnsupportedTemporalTypeException: Unsupported unit: Weeks
 
 //        It’s weird that an Instant displays a year and month while preventing you from doing
 //        math with those fields. Unfortunately, you need to memorize this fact.
@@ -201,7 +206,7 @@ public class Main {
 
 
 //        Similarly in November, an hour after the initial 1:30 is also 1:30 because at 2:00 a.m.
-//                we repeat the hour. This time, try to calculate the GMT time yourself for all three times to
+//        we repeat the hour. This time, try to calculate the GMT time yourself for all three times to
 //        confirm that we really do move back only one hour at a time.
         LocalDate date6 = LocalDate.of(2016, Month.NOVEMBER, 6);
         LocalTime time6 = LocalTime.of(1, 30);
@@ -237,14 +242,6 @@ public class Main {
         System.out.println(s);
         System.out.println(d);
         System.out.println(p);
-
-
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
-        System.out.println("================================================");
     }
 
     private static void performAnimalEnrichment(LocalDate start, LocalDate end,

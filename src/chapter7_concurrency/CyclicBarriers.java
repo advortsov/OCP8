@@ -56,15 +56,15 @@ public class CyclicBarriers {
         }
 
         public static void main(String[] args) {
-            ExecutorService service = null;
-            try {
-                service = Executors.newFixedThreadPool(4);
-                LionPenManager manager = new LionPenManager();
-                for (int i = 0; i < 4; i++)
-                    service.submit(() -> manager.performTask());
-            } finally {
-                if (service != null) service.shutdown();
-            }
+//            ExecutorService service = null;
+//            try {
+//                service = Executors.newFixedThreadPool(4);
+//                LionPenManager manager = new LionPenManager();
+//                for (int i = 0; i < 4; i++)
+//                    service.submit(() -> manager.performTask());
+//            } finally {
+//                if (service != null) service.shutdown();
+//            }
 
 
             System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");

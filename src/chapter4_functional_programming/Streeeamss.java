@@ -3,7 +3,11 @@ package chapter4_functional_programming;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.partitioningBy;
 
 /**
  * @author aldvc
@@ -61,7 +65,7 @@ public class Streeeamss {
 
         //distinct
         Stream<String> d = Stream.of("duck", "duck", "duck", "goose");
-        d.distinct().forEach(System.out::println); // duckgoose
+        d.distinct().forEach(System.out::print); // duckgoose
 
         //limit() and skip()
         Stream<Integer> str = Stream.iterate(1, n -> n + 1);
@@ -120,7 +124,7 @@ public class Streeeamss {
 
 
         System.out.println("============================================================================");
-//using:
+//My using:
 
         List<String> list1 = Arrays.asList("Toby", "Anna", "Leroy", "Alex");
         list1.stream()
@@ -128,6 +132,9 @@ public class Streeeamss {
                 .sorted()
                 .limit(2)
                 .forEach(System.out::println);
+
+        Map<Integer, List<String>> grouped = list1.stream().collect(Collectors.groupingBy(String::length));
+        System.out.println(grouped);
 
     }
 }
